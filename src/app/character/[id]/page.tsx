@@ -28,7 +28,7 @@ const CharacterDetails = () => {
         }
         const data = await response.json();
         setCharacter(data);
-        setEpisodes(data.episode); // Almacenar los episodios en el estado
+        setEpisodes(data.episode); 
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -66,7 +66,7 @@ const CharacterDetails = () => {
   };
 
   const handleBack = () => {
-    router.push("/"); // Redirige al inicio o a una página previa
+    router.push("/"); 
   };
 
   if (loading) {
@@ -88,15 +88,13 @@ const CharacterDetails = () => {
   return (
     <div className="p-8 bg-gradient-to-r from-blue-900 via-purple-900 to-gray-900 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        {/* Imagen de portada */}
+  
         <div
           className="w-full h-48 bg-cover bg-center"
           style={{ backgroundImage: `url(${character.image})` }}
         ></div>
 
-        {/* Contenedor de la información del perfil */}
         <div className="p-8 relative">
-          {/* Avatar */}
           <div className="absolute -top-24 left-1/2 transform -translate-x-1/2">
             <img
               src={character.image}
@@ -105,7 +103,6 @@ const CharacterDetails = () => {
             />
           </div>
 
-          {/* Nombre y detalles del personaje */}
           <div className="text-center mt-16">
             <h1 className="text-4xl font-extrabold text-gray-800">
               {character.name}
@@ -176,7 +173,6 @@ const CharacterDetails = () => {
           </div>
         </div>
 
-        {/* Botón de Regresar */}
         <div className="text-center mb-8">
           <button
             onClick={handleBack}
