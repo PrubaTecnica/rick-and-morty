@@ -15,8 +15,8 @@ const Home = () => {
   const [origin, setOrigin] = useState<string>("");
   const [originData, setOriginData] = useState<{ [key: string]: number }>({});
   const [showChart, setShowChart] = useState<boolean>(false); 
-
-  const fetchCharacters = async (status?: string, species?: string, origin?: string) => {
+  const [nameFilter, setNameFilter] = useState<string>(""); 
+  const fetchCharacters = async (status?: string, species?: string, origin?: string, name?: string) => {
     let url = "https://rickandmortyapi.com/api/character?";
     if (status) url += `status=${status}&`;
     if (species) url += `species=${species}&`;
@@ -24,18 +24,26 @@ const Home = () => {
     const response = await fetch(url);
     const data = await response.json();
 
+    let filteredCharacters = data.results || [];
+
     if (origin) {
-      const filteredCharacters = data.results?.filter(
+      filteredCharacters = filteredCharacters.filter(
         (character: Character) =>
           character.origin.name.toLowerCase() === origin.toLowerCase()
       );
-      setCharacters(filteredCharacters || []);
-    } else {
-      setCharacters(data.results || []);
     }
 
+    // Apply name filter
+    if (name) {
+      filteredCharacters = filteredCharacters.filter((character: Character) =>
+        character.name.toLowerCase().includes(name.toLowerCase())
+      );
+    }
+
+    setCharacters(filteredCharacters);
+
     const originCounts: { [key: string]: number } = {};
-    data.results?.forEach((character: Character) => {
+    filteredCharacters.forEach((character: Character) => {
       const originName = character.origin.name;
       originCounts[originName] = (originCounts[originName] || 0) + 1;
     });
@@ -43,8 +51,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchCharacters(status, species, origin);
-  }, [status, species, origin]);
+    fetchCharacters(status, species, origin, nameFilter); 
+  }, [status, species, origin, nameFilter]);
 
   const chartData = {
     labels: Object.keys(originData),
@@ -58,7 +66,7 @@ const Home = () => {
       },
     ],
   };
-  
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -131,7 +139,7 @@ const Home = () => {
       padding: { left: 20, right: 20, top: 20, bottom: 20 },
     },
   };
-  
+
   return (
     <div className="p-6 bg-gradient-to-r from-blue-900 via-purple-900 to-gray-900 min-h-screen">
       <h1 className="text-5xl font-extrabold text-center mb-10 text-white drop-shadow-lg">
@@ -140,6 +148,14 @@ const Home = () => {
 
       {/* Filters Section */}
       <div className="mb-8 flex flex-wrap justify-center gap-4">
+        <input
+          type="text"
+          placeholder="Search by Name"
+          value={nameFilter}
+          onChange={(e) => setNameFilter(e.target.value)}  // Update nameFilter
+          className="p-2 rounded bg-gray-800 text-white focus:ring focus:ring-purple-500"
+        />
+
         <select
           value={status}
           onChange={(e) => setStatus(e.target.value)}

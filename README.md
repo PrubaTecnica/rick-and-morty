@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Proyecto Rick and Morty Characters
 
-## Getting Started
+Una aplicación desarrollada en React y Next.js que permite explorar personajes de la serie "Rick and Morty". Incluye filtros avanzados por estado, especie y origen, además de visualizaciones interactivas con gráficos.
 
-First, run the development server:
+Características
 
-```bash
+Búsqueda y filtrado de personajes por:
+
+Estado (Alive, Dead, Unknown).
+
+Especie (Human, Alien, Robot).
+
+Origen (Earth, Abadango, etc.).
+
+Visualización interactiva de datos con gráficos.
+
+Diseño responsivo y moderno.
+
+Tecnologías
+
+React: Librería para construir interfaces de usuario.
+
+Next.js: Framework para renderizado del lado del servidor (SSR) y generación estática.
+
+Chart.js: Para visualizaciones de datos.
+
+Tailwind CSS: Para un diseño moderno y responsivo.
+
+Configuración y Ejecución
+
+Sigue estos pasos para configurar y ejecutar la aplicación:
+
+1. Clonar el repositorio
+
+https://github.com/PrubaTecnica/rick-and-morty.git
+cd nombre-del-repositorio
+
+2. Instalar dependencias
+
+Con npm:
+
+npm install
+
+O con yarn:
+
+yarn install
+
+3. Ejecutar el servidor de desarrollo
+
+Con npm:
+
 npm run dev
-# or
+
+O con yarn:
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Abrir en el navegador
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+La aplicación estará disponible en:http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Capturas de pantalla
 
-## Learn More
+Pantalla de inicio
+![alt text](image.png)
 
-To learn more about Next.js, take a look at the following resources:
+Filtros y resultados
+![alt text](image-1.png)
+![alt text](image-2.png)
+Gráfico interactivo
+![alt text](image-3.png)
+Mas detalles
+![alt text](image-4.png)
+Licencia
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este proyecto fue desarrollado exclusivamente para propósitos de una prueba técnica. No está destinado para uso comercial ni distribución pública.
